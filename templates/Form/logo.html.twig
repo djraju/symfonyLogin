@@ -1,0 +1,23 @@
+{% block form_errors %}
+{% spaceless %}
+  {% if errors|length > 0 %}
+      {% for error in errors %}
+          <span class="help-inline">{{ error.message }}</span>
+      {% endfor %}
+  {% endif %}
+{% endspaceless %}
+{% endblock %}
+
+{% block form_row %}
+{% spaceless %}
+  <div class="control-group {% if errors|length > 0 %} error {% endif %}" id="{{ name }}">
+    {{ form_label(form, label, {'label_attr': {'class': 'control-label'}}) }}
+
+    <div class="controls">
+      {{ form_widget(form) }}
+      <br>
+      {{ form_errors(form) }}
+    </div>
+  </div>
+{% endspaceless %}
+{% endblock %}

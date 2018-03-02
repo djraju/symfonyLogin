@@ -1,10 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dhananjay
- * Date: 1/3/18
- * Time: 11:44 AM
+/*
+ * (c) Kinetxx Inc <admin@kinetxx.com>
  */
 namespace App\Repository;
 
@@ -16,6 +13,37 @@ use Doctrine\ORM\NonUniqueResultException;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * @param string         $roleName
+     * @param \DateTime|null $startTime
+     * @param \DateTime|null $endTime
+     *
+     * @return int
+     */
+    public function getNumUsersByRole(string $roleName, ?\DateTime $startTime, ?\DateTime $endTime)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->innerJoin('u.roles', 'r', 'WITH', 'r.name = :role')
+            ->setParameter('role', $roleName);
+
+        if ((!empty($startTime)) && (!empty($endTime))) {
+            $query->where('u.dateJoined between :start and :end')
+                ->setParameter('start', $startTime)
+                ->setParameter('end', $endTime);
+        }
+
+        $finalQuery = $query->getQuery();
+
+        try {
+            $num = (int) $finalQuery->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+            $num = 0;
+        }
+
+        return $num;
+    }
+
     /**
      * @param string $name
      *

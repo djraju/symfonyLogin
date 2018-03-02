@@ -1,0 +1,6 @@
+signin.invalid.credentials: Your Username or Password is incorrect. Please try again.
+signin.invalid.credentials.lockedCount: Your Username or Password is incorrect. Please try again. Your account will be locked after another %count% failed login attempts.
+signin.invalid.csrf:        Invalid CSRF token. Please try again.
+signin.invalid.email:       Use your Username for signin. Please try again.
+signin.user.locked:         Maximum %max_count% failed login attempts exceeded, your account is currently locked. Please try after %minutes% minutes or reset your password if required.
+signin.invalid.username:    Invalid Username. Please try again.

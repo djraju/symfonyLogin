@@ -1,0 +1,34 @@
+.fc-checkmark {
+  top: 82px;
+}
+
+.fc-day-number {
+  font-size: 11px;
+}
+.fc-event-skin {
+  border: 0px;
+  background-color: rgba(255, 255, 255, .1);
+  color: black;
+}
+
+.fc-header-title h2 {
+  font-size: 12pt;
+  line-height: 12pt;
+  color: #337ab7;
+}
+
+.fc-widget-header {
+  font-size: 10pt;
+}
+
+.workout_danger {
+  text-align: center;
+}
+
+.workout_success {
+  text-align: center;
+}
+
+.workout_warning {
+  text-align: center;
+}

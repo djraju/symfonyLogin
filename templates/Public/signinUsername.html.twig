@@ -1,0 +1,73 @@
+{% extends "Public/publiclayout.html.twig" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="notify">
+                {% for flashMessage in app.session.flashbag.get('maintenance_notice') %}
+                    <div class="alert alert-info" role="alert">
+                        {{ flashMessage|raw }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-6">
+                <div style="padding-left: 30px;">
+                    <h2>Sign In</h2>
+                </div>
+                <div id="form-olvidado">
+                    {% if authExceptionMessage is defined %}
+                        <span class="login-error error_text">{{ authExceptionMessage|trans }}</span>
+                    {% endif %}
+                    <form accept-charset="UTF-8" role="form" id="login-form" action="{{ path('_public_signin') }}" method="post">
+                        <fieldset>
+                            <div class="form-control col-lg-8 input-parent-div">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                                <input class="form-control col-lg-10 input-user" required="true" value="{{ app.request.cookies.get('_username') }}" placeholder="Username" name="_username" type="text" autocomplete="off" />
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="_token" value="{{ csrf_token('kinetxx') }}" />
+                                <button type="submit" class="btn btn-submit btn-signin">
+                                    Continue
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    {% if show_username is defined %}
+        <div class="modal fade" id="showUsername" role="dialog" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3 class="header">Username</h3>
+                    </div>
+
+                    <div class="modal-body">
+                        <b>Your Username is :</b>&nbsp;&nbsp;{{ show_username }}
+                    </div>
+
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <script>
+        var showUsername = "{{ show_username is defined ? show_username : '' }}";
+        $(function() {
+            if(showUsername != "") {
+                $('#showUsername').modal('show');
+            }
+        });
+    </script>
+{% endblock %}

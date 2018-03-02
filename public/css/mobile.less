@@ -1,0 +1,678 @@
+@import "standard.less";
+@footer-height: 50px;
+
+/**********
+ * Header *
+ **********/
+#navigation_main {
+    border-top: 0px;
+    position: fixed;
+    opacity: 0.90;
+}
+
+#navigation_tabs{
+                height: 100%;
+                padding: 0px;
+            }
+
+.logo {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    margin-left: 0px;
+}
+
+/**********
+ * Footer *
+ **********/
+.navbar-fixed-top {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#menu_back {
+    width: 100%;
+}
+
+#go-back {
+    a {
+        color: @cl-ktx-blue;
+        font-size: 18px;
+    }
+
+    span {
+        position: absolute;
+        top: 16px;
+        left: 10px;
+    }
+}
+
+.nav-tabs {
+    li {
+        a {
+            text-transform: none;
+        }
+
+        a span {
+            margin-top: -5px;
+            font-size: 25px;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+#footer {
+    //height: @footer-height;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    .nav-tabs > li{
+    padding: 0px 3px;
+        span.practice {
+        text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        font-size: 13px;
+        }
+    }
+
+    .nav-tabs > li > a:hover,
+    .navbar .nav > .active > a {
+        background: none;
+        border: 0;
+        color: @cl-ktx-blue;
+    }
+}
+
+/********
+ * Body *
+ ********/
+
+.alert {
+    padding: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.alert-danger {
+    background-color: @cl-ktx-blue;
+}
+
+.alert-dismissable {
+    .close {
+        right: 0px;
+        color: black;
+    }
+}
+
+body {
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.center {
+    text-align: center;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -@footer-height;
+    padding: 0 0 @footer-height;
+}
+
+#the_container {
+    padding-top: 60px;
+    border-left: 0px;
+    border-right: 0px;
+    width: inherit;
+    max-width: inherit;
+}
+
+/**************
+ * Login Form *
+ **************/
+
+.loginContainer {
+    @margin-bottom: 15px;
+
+    background: white;
+
+    #loginForm {
+        text-align: center;
+        width: inherit;
+
+        input {
+            float: none;
+            margin-bottom: @margin-bottom;
+            width: 165px;
+        }
+    }
+
+    p {
+        width: 270px;
+        margin: 5px auto;
+        text-align: center;
+        margin-bottom: @margin-bottom;
+    }
+
+    #sign-up {
+        margin-top: 25px;
+    }
+    .remember_me_div{
+            i{
+            border:none;
+            margin: 0 5px;
+            cursor: pointer;
+            }
+    }
+    .stay_signedin_div{
+    margin-left: 0px;
+        p{
+            margin: 0px auto 10px auto;
+            padding-left: 75px;
+            font-size:14px;
+            font-weight: 200;
+            letter-spacing: 1px;
+            color: red;
+            text-align: left;
+        }
+    }
+    #stay_signedin {
+        width: 20px !important;
+        margin-left: -28px;
+    }
+}
+
+/********************
+ * Exercise details *
+ ********************/
+
+#demoVideoContainer {
+    text-align: center;
+}
+
+#demoVideo {
+    padding-right: 0px;
+    margin-bottom: 15px;
+    width: 273px;
+    height: 154px;
+}
+
+.workout_steps {
+    margin-top: 0px;
+
+    li img {
+        padding-bottom: 10px;
+        max-width: 270px;
+        float: none;
+    }
+
+    .workoutStepPic {
+        text-align: center;
+        max-width: none;
+        margin-left: 0px;
+    }
+
+    .workoutStepDescription {
+        width: 100%;
+        max-width: none;
+        padding-right: 5px;
+        margin-left: 0px;
+    }
+}
+
+/*****************
+ * Messages View *
+ *****************/
+
+.preview {
+    padding: 0px;
+    height: 50px;
+
+    img {
+        float: none;
+        height: 100%;
+        width: auto;
+    }
+}
+
+.avatar {
+    height: 100%;
+    float: none;
+}
+
+.messageWith {
+    padding-left: 0px;
+    margin-top: 15px;
+    text-align: center;
+    width: 65%;
+}
+
+.messageIcon {
+    .status;
+    top: 8px;
+    right: 10px;
+    left: inherit;
+    background: none;
+}
+
+/****************
+ * Workout page *
+ ****************/
+.exercise-nav {
+    .status;
+    background: none;
+    top: 18px;
+    left: inherit;
+    right: 10px;
+}
+
+/*****************
+ * Progress page *
+ *****************/
+
+h3 {
+    margin-top: 0px;
+}
+
+.stat {
+    text-align: center;
+
+    .subheader {
+        font-size: 16px;
+    }
+
+    p {
+        display: inline-flex;
+    }
+
+    #ranking {
+        color: @cl-ktx-green;
+        margin-right: 5px;
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .total-ranking {
+        margin-left: 5px;
+    }
+
+    #weekly-score {
+        #ranking;
+        margin-right: 0px;
+    }
+
+    #progress-score {
+        #weekly-score;
+        color: @cl-ktx-blue;
+    }
+}
+
+.weekly {
+    margin-left: -15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+
+.survey {
+    .weekly;
+    margin-top: 0px;
+    padding-bottom: 15px;
+}
+
+.header {
+    font-size: 16px;
+}
+
+/****************
+ * Conversation *
+ ****************/
+.conversation .convo {
+    min-height: 60px;
+    display: inline-block;
+    width: 100%;
+
+    &:last-child {
+        margin-bottom: 20px;
+    }
+    &:first-child {
+        margin-top: 30px;
+    }
+}
+
+.conversation .meta img {
+    height: 30px;
+    width: 30px;
+}
+
+.conversation {
+    .msg-from {
+        text-align: right;
+
+        .msg {
+            display: inline-block;
+            float: none;
+        }
+    }
+
+    .msg-to {
+        .msg {
+            display: inline-block;
+            float: none;
+        }
+    }
+}
+
+#sendMessageForm {
+    textarea {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        resize: none;
+        font-size:16px;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+}
+
+/**************************
+ * List Exercise programs *
+ **************************/
+.listExercisePrograms {
+    .header {
+        background: @cl-ktx-blue;
+        color: white;
+        margin: 2px -15px;
+        padding: 2px 0px 2px 15px;
+    }
+
+    ul {
+        li {
+            padding-top: 15px;
+            padding-left: 15px;
+        }
+
+        li.last-item {
+            border-bottom: none;
+        }
+
+        li.last-item:hover {
+            border: 1px solid @cl-ktx-blue;
+        }
+
+        span.fa {
+            top: -8px;
+        }
+    }
+}
+
+/************************************
+ * View exercise programs exercises *
+ ************************************/
+#banner {
+    margin-top: -12px;
+
+    .header {
+        .listExercisePrograms .header;
+        padding: 17px 0px 17px 15px;
+        font-size: 20px;
+    }
+
+    .sign-up {
+        background: @cl-ktx-blue;
+        padding-top: 9px;
+        padding-bottom: 7px;
+
+        a {
+            width: 85px;
+        }
+    }
+
+    #exercise-name {
+        padding: 12px 0px;
+    }
+}
+
+.viewExerciseProgramExercises {
+    ul {
+        li {
+            padding-top: 10px;
+            padding-left: 15px;
+        }
+
+        .exercise-title {
+            font-size: 14px;
+        }
+
+        .exercise-nav {
+            top: 25px;
+        }
+    }
+}
+
+#switchProvider{    
+    .providerRow{
+        margin: 0px;
+        padding: 10px;
+        border: 1px solid;
+        margin-bottom: 15px;
+        .selAccount{
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+    }
+}
+#send_message {
+    float: right;
+    img {
+        width: 20px;
+        height: 20px;
+        margin-top: -60px;
+        margin-left: 5px;
+    }
+}
+#caption {
+    div {
+        display: inline;
+        float: left;
+
+        #addToMessage {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+    }
+    div.caption-text {
+        width: 90%;
+    }
+}
+.attachedImage {
+    max-width: 85%;
+    max-height: 350px;
+    float: right;
+    cursor: pointer;
+}
+.block-compose {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    background-color: #fff;
+    border-left: 1px solid rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    max-width: 85%;
+    padding: 10px 19px;
+    position: relative;
+    z-index: 0;
+    border-radius: 5px;
+    cursor: text;
+    margin-left: 20px;
+    margin-top: 10px;
+
+    .input-container {
+        border-radius: 5px;
+        width: inherit;
+        background-color: #ffffff;
+        -webkit-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-width: 0;
+        border-color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        box-sizing: border-box;
+
+        .pluggable-input {
+            position: relative;
+            -webkit-flex: 1;
+            flex: 1;
+            display: -webkit-flex;
+            display: flex;
+            padding-right: 5px;
+
+            [contentEditable=true]:empty:not(:focus):before{
+                content:attr(data-text)
+            }
+
+            .pluggable-input-placeholder {
+                left: 2px;
+                color: #a4a4a4;
+                font-size: 15px;
+                line-height: 20px;
+                pointer-events: none;
+                position: absolute;
+                top: 6px;
+                transition: opacity .08s linear;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                z-index: 0;
+            }
+
+            .pluggable-input-body {
+                width: 100% !important;
+                font-weight: normal;
+                max-height: 100px;
+                min-height: 20px;
+                outline: none;
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding-right: 2px;
+                position: relative;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                z-index: 0;
+                border-left: 0.1px solid transparent;
+            }
+        }
+    }
+}
+#previewImageModal {
+    height: 100%;
+    top: 20px;
+    .modal-content {
+        height: 100%;
+    }
+    .modal-header {
+        display: block;
+        padding: 2px 15px;
+
+        button.close {
+            margin-top: -3px;
+        }
+    }
+}
+.chat-loader {
+    position: absolute;
+    margin-top: -120px;
+    margin-left: 100px;
+    z-index: 2;
+}
+.message_view {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+}
+.back_container {
+    background: #fff;
+    height: 35px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    top: -1px;
+
+    #recipient_name {
+        margin-left: 30px;
+        color: #000;
+    }
+}
+
+#preview-image {
+    height: 100%;
+    text-align: center;
+    img {
+        max-width: 85%;
+        max-height: 100%;
+    }
+}
+#pswd_info.mobile_screen_pwd_policy {
+    top: 140px !important;
+    margin-top: -245px;
+    left: 0 !important;
+    width: 100%;
+
+    &:before {
+        background: #006276 none repeat scroll 0 0;
+        left: 45%;
+        margin-top: 0;
+        top: -10px;
+    }
+}
+.error_messages {
+    .login-error {
+        margin-top: -10px;
+        position: relative;
+        margin-bottom: 5px;
+    }
+}
+.margin_top-140 {
+    margin-top: -140px !important;
+}
+
+.resetButton #resetPassword_submit {
+    width: 100% !important;
+}
+.event a {
+    border: 1px solid #fcd3a1;
+    background: #fbf8ee url(blitzer/images/ui-bg_glass_55_fbf8ee_1x400.png) 50% 50% repeat-x;
+    color: #444;
+}
+.ui-state-highlight {
+    border: 1px solid #d8dcdf !important;
+    background: #eee url(blitzer/images/ui-bg_highlight-hard_100_eeeeee_1x100.png) 50% 50% repeat-x !important;
+    font-weight: bold;
+    color: #004276 !important;
+}
+.ui-state-active {
+    border: 1px solid #eee !important;
+    background: #fff !important;
+    font-weight: bold;
+    color: #c00 !important;
+}
+
+#resetPswdErr{
+    margin-bottom: 10px;
+    display: block;
+}
+
+#message-center {
+    height: 84%;
+}

@@ -1,29 +1,20 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dhananjay
- * Date: 1/3/18
- * Time: 11:44 AM
+/*
+ * (c) Kinetxx Inc <admin@kinetxx.com>
  */
 namespace App\Controller;
 
-use Psr\Log\LoggerInterface;
-use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use function trim;
 
 /**
  * Class PublicController
  */
-class PublicController extends Controller
+class PublicController extends AbstractBaseController
 {
     const INDEX = "index";
-    const ABOUT_US = "aboutus";
-    const CONTACT_US = "contactus";
     const LOGIN = "login";
 
     private $ktxLogo = 'https://s3.amazonaws.com/ktx-static/site-images/logos/kinetxx-logo.png';
@@ -33,10 +24,67 @@ class PublicController extends Controller
      *
      * @return Response
      */
-    public function indexAction(LoggerInterface $logger)
+    public function indexAction()
     {
-        $logger->info("Loading Signin Page");
-        return $this->render('Public/signin.html.twig');
+        $a = $this->createPublicDefaultParameters(self::INDEX, "kintexx_the_container");
+
+        $a['logo'] = $this->ktxLogo;
+        $a['staySignedInValidity'] = $this->container->getParameter("stay_signed_in_validity");
+
+        return $this->render('Public/index.html.twig', $a);
     }
 
+    /**
+     * @Route("/signin", name="_public_signin")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function signinAction(Request $request)
+    {
+        $a = $this->createPublicDefaultParameters(self::LOGIN, "kintexx_the_container");
+
+        if ($request->isMethod('POST')) {
+            $a['username'] = 'ktx_support';
+
+            return $this->render('Public/signin.html.twig', $a);
+        }
+
+        $a['logo'] = $this->ktxLogo;
+        $a['authExceptionMessage'] = null;
+
+        return $this->render('Public/signinUsername.html.twig', $a);
+    }
+
+    /**
+     * @Route("/aboutus", name="_public_aboutus")
+     *
+     * @return Response
+     */
+    public function aboutusAction()
+    {
+        return new Response("aboutusAction");
+    }
+
+    /**
+     * @Route("/contactus", name="_public_contact")
+     *
+     * @return Response
+     */
+    public function contactusAction()
+    {
+        return new Response("contactusAction");
+    }
+
+    /**
+     * @param string $page
+     * @param string $container
+     *
+     * @return array
+     */
+    private function createPublicDefaultParameters($page, $container = "")
+    {
+        return array("activePage" => $page, "container" => $container);
+    }
 }

@@ -1,0 +1,1150 @@
+@charset "utf-8";
+/* CSS Document */
+/* Balwinder Css Start */
+#kinetxx_the_container {
+	padding-left: 0;
+	padding-right: 0;
+	border-left: 1px solid #d7d7d9;
+	border-right: 1px solid #d7d7d9;
+	height: auto !important;
+	margin-bottom: -50px;
+	min-height: 100%;
+	padding-top: 78px;
+}
+.navbar > .container, .navbar > .container-fluid {
+	display: block !important;
+}
+#the_body {
+	overflow-x: hidden;
+}
+.mrg-top20 {
+	margin-top: 20px !important;
+}
+.mrg-top30 {
+	margin-top: 30px !important;
+}
+.mrg-top40 {
+	margin-top: 40px;
+}
+.mrg-top60 {
+	margin-top: 60px;
+}
+.session-block{
+	width: 200px;
+}
+.session-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float:left;
+	margin-right:20px;
+	margin-bottom:20px;
+	border:1px solid #d1d1d5;
+}
+.session-list li {
+	border: 1px solid #f1f1f2;
+	border-bottom: 1px solid #d1d1d5;
+	padding: 10px 15px;
+	position: relative;
+}
+.session-list li .session-title {
+	color: #0da9f1;
+	font-size: 18px;
+	font-weight: 100;
+	letter-spacing: 1px;
+}
+.session-list li .session-sets {
+	color: #a2a2a8;
+	display: block;
+}
+.session-list li.active, .session-list li:hover {
+	background: #fff;
+	border: 1px solid #0da9f1;
+	cursor: pointer;
+}
+.session-list .session-header {
+	background: #e9e9eb;
+	display: block;
+	color: #0da9f1;
+	font-size: 18px;
+	font-weight: 500;
+	/* margin: 10px 0; */
+	padding: 10px;
+}
+.tab {
+	margin-top: 30px!important;
+}
+.clear-changes {
+	margin: 20px 20px 0 0px!important;
+}
+#sessions_programs {
+	border: 1px solid #d7d7d9!important;
+	padding-bottom: 15px;
+}
+#sessions_programs > div {
+	padding: 5px 5px 15px 10px;
+	position: relative;
+}
+
+#sessions_tabs {
+	margin-top: 10px;
+	margin-left: -5px;
+}
+#sessions_tabs li {
+	background: #e9e9eb;
+	height: 30px;
+	width: auto;
+	padding-right: 5px;
+}
+#sessions_tabs a {
+	height: 30px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+#sessions_tabs a:hover {
+	background: #0da9f1;
+	color: #fff;
+}
+#sessions_tabs li:hover {
+	background: #0da9f1;
+	color: #fff;
+}
+#sessions_tabs .active a {
+	background: #0da9f1 !important;
+	z-index: 1;
+	color:#fff;
+}
+#sessions_tabs li.active {
+	background: #0da9f1 !important;
+}
+
+.draggable
+{
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+.dropped
+{
+    position: static !important;
+}
+#exercise_container, #1
+{
+    border: 5px solid #ccc;
+    padding: 5px;
+    min-height: 100px;
+    width: 430px;
+}
+#exercise_container > div.ui-draggable-dragging { background: white; }
+
+.exerciseItemShadow{
+	box-shadow: 0 0 12px 0;
+}
+
+#sessions_programs > span.exercise-remove{
+	cursor: hand;
+}
+
+.gi-2x{font-size: 5em;}
+/* Balwinder Css End */
+
+#loading, #message-loading, #broadcast_message_loading, .loading, #patients_loading {
+	border: 1px solid #d7d7d9!important;
+	padding-bottom: 105px;
+	text-align: center;
+	display:none;
+}
+
+.loading {
+	position: absolute;
+	width: 100%;
+	margin-top: -70px;
+	margin-left: -30px;
+	border: none !important;
+}
+
+#message-loading, #broadcast_message_loading, #patients_loading {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	top: 50%;
+	left: 6%;
+	border: none !important;
+}
+#patients_loading {
+	top: 20%;
+}
+
+@media (max-width: 720px){
+	.session-block{
+		width: 100%;
+	}
+}
+
+#draggingContainer{
+	width: 15%;
+	padding: 20px;
+}
+
+#draggingProgramContainer{
+	width: 40%;
+}
+
+#draggingContainer input{
+	visibility: hidden;
+}
+
+#addPatient_programInjury, #addPatient_workoutSchedule {
+		margin-bottom: 8px !important;
+}
+
+.exercise-hover {
+		background-color: #fff;
+		cursor: move;
+		box-shadow: 0 0 12px 0;
+		border-bottom: 1px solid #e9e9eb;
+}
+.session_tab_hover:hover {
+		background-color: #fff;
+}
+.drop-hover {
+		cursor: move;
+		box-shadow: 0 0 12px 0;
+		border-bottom: 1px solid #e9e9eb;
+}
+.exercise-youtube {
+		border-right: 2px solid darkgrey;
+		border-bottom: 2px solid darkgrey;
+}
+
+.floating-workout {
+ 	width:100%;
+ 	position:absolute;
+ 	/*overflow-y: scroll;*/
+ 	/*height: 70%;*/
+ }
+
+.exercise-list .comment {
+	position: absolute;
+	left: 8px;
+	top: 35px;
+}
+.exercise-list .comment-box {
+	margin-top: 20px;
+	display: none;
+}
+.exercise-list .comment-box textarea {
+	border: 1px solid #cc66cc;
+	width: 95%;
+	resize: vertical !important;
+}
+.comment-box textarea {
+	resize: vertical !important;
+}
+.showComment {
+    display: block;
+}
+.hideComment {
+    display: block;
+}
+.workout_steps li div {
+	width: 65%;
+	margin-top: 25px;
+}
+.workout_steps li img {
+	width: 150px;
+}
+.workout_steps li {
+	margin-bottom: 5px;
+}
+
+#right_side, #right_sides, #workout_template_table_div, #provider_patients_div,
+#conversasion, #message-center, #patient_survey_div, #broadcast_recepients, .listWorkout, #patientProgress {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+ul.exercise-list .session-header {
+	cursor: pointer;
+}
+.alert-warning {
+	text-align: center;
+}
+.alert-warning h4 {
+	margin-bottom: 0px;
+}
+
+.patient-progress #the_container {
+	margin-bottom: 0;
+}
+
+.comment-block {
+	width: 100%;
+	margin-top: -30px;
+}
+.comment-block .comment-box {
+	display:none;
+	text-align: right;
+	width: 100%;
+}
+.comment-block .comment {
+	margin-top: 20px;
+	float: right;
+}
+.mark_workout_name {
+	display: inline !important;
+	font-size:13px !important;
+	position: absolute;
+	margin-top: 5px !important;
+	font-weight: bold;
+}
+.exerciseModal iframe {
+	width: 100%;
+	height: 250px;
+}
+#ex_container .form-group {
+	float: left;
+	width: 24%;
+	margin-right: 5px;
+}
+#editWorkoutForm .workout-props {
+	margin-bottom: -15px;
+}
+.workout-props .controls > div.search-container {
+	margin-top: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.workout-props .controls > div.search-container span {
+	color: #d7d7d9;
+	position: absolute;
+	right: 6px;
+	top: 12px;
+}
+.workout-props .controls {
+	margin-top: -10px;
+}
+.workout-props .controls > div.search-container #clear-search {
+	right: 25px;
+	cursor: pointer;
+}
+.workout-props .controls > div.search-container #search {
+	width: 100%;
+}
+.multiselect-native-select {
+	display: block;
+}
+.multiselect-native-select .btn-group {
+	width: 100%;
+}
+.multiselect-native-select .btn {
+	background-color: #fff;
+	width: 100%;
+	max-width: 100%;
+	border: 1px solid #ccc;
+	color: #555;
+	text-align: justify;
+	border-radius: 4px;
+}
+.multiselect-native-select .btn:hover {
+	color: #555;
+}
+.btn .caret {
+	position: absolute;
+	right: 5px;
+	top: 17px;
+}
+.multiselect-native-select .dropdown-menu {
+	width: 100%;
+	top: 85%;
+}
+#createExerciseForm {
+	margin-top: -20px;
+	width: 100%;
+}
+#createExerciseForm .form-group {
+	width: 18%;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+#library-type {
+	height: 38px;
+	margin-top: 3px;
+}
+.remove {
+	padding: 2px 5px 0;
+	height: 36px;
+	width: 33px;
+	position: absolute;
+	left: 0;
+	cursor: pointer;
+	top: 70px;
+	background: none;
+	font-size: 20px;
+}
+.remove a {
+	text-decoration: none;
+}
+.injury_span {
+	margin-left: 0px;
+}
+#exerciseLibrary_injury, #exerciseLibrary_position,
+#editWorkout_injury, #editWorkout_position,
+#WorkoutTemplateInjury_injury, #editWorkoutTemplate_injury, #editWorkoutTemplate_position {
+	margin-top: 10px;
+	height: 39px;
+}
+
+.exerciseModal {
+	overflow:hidden;
+}
+.exerciseModal .workout_steps {
+	margin-top: 15px;
+}
+.exerciseModal .modal-content {
+	overflow-y: scroll;
+	width: 700px;
+}
+.exerciseModal .modal-title {
+	text-align: center;
+}
+.exerciseModal .modal-body {
+	display: inline-block;
+}
+.exerciseModal .carousel-indicators {
+	top: 215px;
+}
+
+#current_exercises {
+	overflow:hidden;
+	margin-bottom:-50px;
+	margin-top: -5px;
+	padding-left: 6px;
+	padding-right:20px;
+}
+
+#current_exercises > .subheader {
+	margin-top: 7px;
+	margin-bottom: 0px;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 400;
+	color: #555;
+	line-height: 1;
+}
+
+#sessions_programs {
+	height: 100%;
+}
+
+#available_exercises > .workout-props {
+	padding-left: 4px;
+	padding-right: 6px;
+}
+
+#available_exercises > .workout-props span.multiselect-native-select {
+	margin-top: -7px;
+}
+.exercise-item {
+	margin-top: 15px;
+}
+
+#exercise_tabs {
+	margin-top: 0px;
+}
+#createWorkoutTemplate #library-type {
+	height: 38px;
+	margin-top: 10px;
+}
+#editWorkoutTemplate_injury, #editWorkoutTemplate_position, #editWorkout_injury, #editWorkout_position {
+	margin-top: 2px;
+	height: 38px;
+}
+.dropdown-toggle, .multiselect {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-right: 10px;
+}
+
+#sessions_programs .exercises-choosen {
+	cursor: default;
+}
+#sessions_programs .exercises-choosen .subheader {
+	cursor: pointer;
+}
+.multiselect-container label.checkbox {
+	padding-left: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding-right: 5px;
+}
+.margin10 {
+	margin-top: 10px;
+}
+.survey_time span {
+	display: inline;
+	float: left;
+}
+.survey_time span:last-child {
+	margin-left: 10px;
+	margin-top: -7px;
+}
+.survey_time span input {
+	width: 70px;
+	margin-right: 5px;
+}
+.survey_time {
+	margin-bottom: 30px;
+	margin-left: 10px;
+}
+.survey_config {
+	padding: 10px;
+}
+
+#exerciseStepImage ul {
+	position: absolute;
+	list-style: none;
+	color: red;
+	margin-top: 26px;
+}
+.modal-body {
+	width: 100%;
+}
+.modal-open {
+	overflow-y: scroll;
+}
+.save-cancel {
+	width: 47% !important;
+	margin-right: 5px !important;
+}
+#editWorkout_submit {
+	margin-left: 2px !important;
+}
+#editWorkout_cancel {
+	margin-top: -7px;
+}
+#workout_template_table {
+	width: 90%;
+}
+.mark_workout_name {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 105px;
+}
+
+.forgot-pwd {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.message-filter {
+	width: 350px;
+	margin-top: -40px;
+}
+
+#isWorkoutTemplate label {
+	display: inline;
+	float: right;
+	margin-right: 225px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+#isWorkoutTemplate div.controls {
+	float: left;
+	width: 40px;
+	height: 30px;
+	position: absolute;
+	margin-top: -7px;
+}
+#addPatientInjury_isWorkoutTemplate {
+	margin-top: 8px;
+	width: 40px;
+	height: 60%;
+}
+
+.left_div {
+	display: inline;
+	float: left;
+	width: 45%;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.right_div {
+	float: right;
+	width: 50%;
+	padding: 5px;
+}
+
+.message-enter {
+	border: none;
+	margin-left: -16px;
+}
+
+.message-enter .alert {
+	padding: 5px;
+	margin-bottom: 5px;
+}
+#sendMessage_text, #sendBroadcastMessage_text {
+	border: 1px solid #e9e9eb;
+	width: 97%;
+	float: left;
+	border-radius: 10px;
+}
+#user-header {
+	margin-top: -40px;
+	margin-bottom: 10px;
+}
+#user-header div {
+	margin-left: 35px;
+}
+#user-header .name {
+    padding-top: 7px;
+}
+
+#user-header img, .receiver_header img {
+	height: 30px;
+	float: left;
+	width: 30px;
+	margin-right: 5px;
+}
+.receiver_header img {
+	height: 20px;
+	width: 20px;
+}
+.receiver_header {
+	display: inline;
+	float: left;
+}
+#user-header .name, .receiver_header .name {
+	color: #6d6e71;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+}
+#user-header .placeholder {
+	color: #d1d1d5;
+}
+.btn {
+	cursor: pointer;
+	height: 38px;
+	line-height: 22px;
+}
+.nextBtn {
+	float: right;
+	margin-left: 10px;
+	width: 100px;
+}
+.btn-secondary {
+	width: 100px;
+}
+#createWorkout_customDays label {
+	font-weight: 500;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.template-edit, .template-remove, .template-copy {
+	cursor: pointer;
+	margin-right: 10px;
+}
+.template-remove {
+	margin-right: 10px;
+}
+#broadcast-msg {
+	float: right;
+	margin-top: -30px;
+}
+#broadcast-msg a {
+	cursor: pointer;
+	margin-right: 30px;
+    font-size: 18px;
+    color: #6d6e71;
+}
+.broadcast_preview, .patient_preview {
+	border: 1px solid #d7d7d9;
+	padding: 10px;
+	position: relative;
+}
+.broadcast_preview img, .patient_preview img {
+	height: 30px;
+	float: left;
+	width: 30px;
+}
+.broadcast_preview div, .patient_preview div {
+	float: left;
+	margin-left: 10px;
+}
+.broadcast_preview .name, .patient_preview .name {
+	color: #6d6e71;
+	display: block;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 8px;
+}
+.broadcast_preview .msg, .patient_preview .msg {
+	color: #a2a2a8;
+	display: block;
+}
+.broadcast_preview .receiver, .patient_preview .receiver {
+	float: left;
+	margin-top: 8px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.message-enter form {
+	margin-top: 10px;
+}
+#broadcast_header {
+	width: 100%;
+	height: 30px;
+}
+.speaker_icon {
+	margin-right: 5px;
+}
+#imageUpload, #broadcastImageUpload {
+	cursor: pointer;
+	float: right;
+    margin-right: -45px;
+    font-size: 18px;
+}
+#broadcastModal .message-filter {
+	margin-left: 0px;
+	margin-top: -10px;
+}
+#brodcast-clear-search {
+	margin-right: 18px;
+}
+#exercise_tabs li {
+	background: #e9e9eb;
+	width: 248px;
+}
+#exercise_tabs li .mark_workout_exercise{color: #000000;}
+#exercise_tabs li .mark_workout_name{color: #000000;}
+#exercise_tabs li.active {background-color: #2a6592 !important;}
+#exercise_tabs li.active a{color: #FFFFFF;}
+#exercise_tabs li.active .mark_workout_exercise{color: #FFFFFF;}
+#exercise_tabs li.active .mark_workout_name{color: #FFFFFF;}
+.copy {
+	padding: 2px 5px 0;
+	height: 36px;
+	width: 33px;
+	position: absolute;
+	left: 0;
+	cursor: pointer;
+	top: 35px;
+	background: none;
+	font-size: 20px;
+}
+
+/*  Pagination CSS */
+.pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination a {
+	font-weight: 500;
+	padding-top: 1px;
+	text-decoration:none;
+	border: 1px solid rgba(0,0,0,.25);
+	min-width:100px;
+	min-height:60px;
+	color: #0da9f1 !important;
+	box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.35);
+	padding: 10px;
+}
+.pagination .current {
+	padding: 10px;
+}
+.pagination .page, .pagination .first, .pagination .previous, .pagination .next, .pagination .last {
+	cursor: pointer;
+}
+
+.yellow{
+	background: yellow;
+}
+
+#paginationCount {
+	background: #0da9f1;
+	color: #FFFFFF;
+	font-weight: bold;
+	width: 20%;
+	padding: 5px;
+}
+#navigation_user .dropdown-menu {
+	left: -0.1rem;
+	width: 100%;
+	padding: 0;
+	margin-top: -2px;
+}
+#navigation_user .dropdown-item {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	color: #428bca;
+	border: 1px solid #f1f2f2
+}
+#navigation_user .dropdown-item:hover {
+	background: #428bca;
+	color: #fff;
+}
+#navigation_main {
+	padding: 0.5rem 0 0 0;
+}
+#navigation_tabs {
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.nav-tabs > li {
+	float: left;
+	margin-bottom: -1px;
+	padding-right: 0;
+	padding-top: 8px;
+}
+.nav-tabs > li:hover {
+	background: #78777a;
+}
+.nav-tabs > li.active {
+	background: #78777a;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+}
+.nav > li {
+	position: relative;
+	display: block;
+}
+.nav > li > a {
+	padding-top: 0;
+	padding-bottom: 7px;
+}
+#menu_back, #menu_box {
+	height: 100%;
+	display: inline-block;
+}
+#menu_box .fa {
+	font-size: 22px;
+	width: 100%;
+	margin-left: 5px;
+}
+
+.btn-signin {
+	background: #008000;
+	border-bottom: none;
+	color: #fff;
+	max-width: none;
+	width: 57% !important;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-top: 3px;
+	margin-left: 12px;
+}
+.center-div{
+	text-align: center;
+	margin-right: 222px;
+	margin-top: 15px;
+}
+
+.login-error {
+	margin-top: -30px;
+	margin-left: 0;
+}
+.anchor-signin {
+	margin-top: 23px;
+}
+.anchor-register {
+	margin-top: 23px;
+	margin-left: 15px;
+}
+.input-group-addon {
+	display: inline;
+	float: left;
+	line-height: 1.4;
+}
+.input-user, .input-password {
+	border-left: none;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.input-parent-div {
+	background-color: transparent;
+	border: none;
+}
+#form-olvidado {
+	padding: 20px;
+}
+.remember_me_div {
+	margin-left: 12px;
+	margin-top: 15px;
+}
+body.interior {
+	padding-top: 0 !important;
+}
+#the_container {
+	padding-top: 155px !important;
+}
+.patient-progress #exercise_list_container {
+	padding-left: 25px;
+}
+#exercise_tabs .active a {
+	border: none;
+}
+#exercise_tabs > li:hover {
+	/*background: #2a6592;*/
+	/*border-right: none;*/
+	/*border-left: none;*/
+}
+#exercise_tabs {
+	height: 35px;
+}
+.equipment-list {
+	padding-left: 6px;
+}
+.paper-workout {
+	max-width: 150px;
+}
+.status span.fa-check-square-o {
+	color: #0da9f1;
+}
+.hide {
+	display: none;
+}
+.show {
+	display: block;
+}
+.htt-docs-sidenav li {
+	padding: 5px;
+}
+.htt-docs-sidenav li a {
+	padding-bottom: 7px;
+}
+.slides .carousel-control.right {
+	top: 250px;
+	right: 25px;
+	background-image: none;
+	position: absolute;
+}
+.slides .carousel-control.left {
+	top: 250px;
+	left: 25px;
+	background-image: none;
+	position: absolute;
+}
+.carousel-inner img {
+	max-width: 55%;
+	margin-left: 125px;
+}
+#providerPatientFilter {
+	width: 100%;
+	margin-bottom: 15px;
+}
+.providerListDD ul {
+	min-height: 35px;
+}
+.libraryTypeDD ul {
+	min-height: 65px;
+}
+.multiselect::after {
+	float: right;
+	top: 18px;
+	position: absolute;
+	right: 5px;
+}
+
+#add_patient_btn {
+	cursor: pointer;
+}
+#createWorkoutForm .controls, .patientInjury-control {
+	width: 52%;
+}
+nav.tertiary {
+	width: 100%;
+}
+.btn.disabled, .btn:disabled {
+	opacity: 0.2 !important;
+}
+.session-remove {
+	font-size: 13px !important;
+	margin-left: 5px !important;
+	margin-top: 3px !important;
+}
+#sessionTabs {
+	overflow-y: auto;
+	padding: 5px 0;
+	margin-left: -5px;
+}
+.checkbox-inline {
+	padding: 5px;
+}
+.weekdays-div {
+	float: right;
+	margin-bottom: -15px;
+	margin-top: -30px;
+	margin-right: -75px;
+}
+.table th, .table td {
+	padding: 0.4rem 0.75rem;
+}
+#conversasion h2.header {
+	position: relative;
+	float: none;
+}
+#templateListContainer .header {
+	margin-top: 0px;
+	position: relative;
+	float: none;
+	margin-bottom: 45px;
+}
+.sessionPrograms {
+	padding-right: 5px;
+	padding-left: 5px;
+	max-width: 100%;
+}
+.exercise-item a, .span-icon {
+  color: #0da9f1 !important;
+}
+.span-icon {
+	margin-left: 0px;
+}
+.customExerciseHeader .btn {
+	width: 100px;
+}
+.modal-header {
+	display: inline-block;
+	width: 100%;
+}
+.modal-header .header {
+	width: 90%;
+}
+.card {
+	background: none;
+	border: none;
+}
+.card-block {
+	background: #fff;
+}
+.card-header {
+	padding: 8px 15px;
+	border: 1px solid #ddd;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.card-title {
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+.nav a {
+	text-decoration: none;
+}
+.nav li {
+	cursor: pointer;
+	width: 100px;
+	height: 56px;
+}
+.fa-heart-o, .fa-heart {
+	color: #d7d7d9;
+	font-size: 30px;
+	font-weight: 800;
+	line-height: 1.2;
+	margin-right: 3px;
+	-webkit-font-smoothing: antialiased;
+}
+.fa-heart {
+	color: #8bc53f;
+}
+.heart-wrapper {
+	padding-right: 0px;
+}
+#heart_container {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+#edit_survey_map_btn {
+	margin-bottom: 15px;
+}
+#survey_submit {
+	width: 100px;
+}
+#addNewSession {
+	border-left: 1px solid #fff;
+}
+#addNewSession a {
+	height: 18px;
+}
+.exercises-choosen a {
+	color: #0da9f1 !important;
+}
+.username {
+	font-size: 22px !important;
+}
+#edit_contact_info_btn {
+	margin-bottom: 15px;
+}
+#change_password_btn {
+	margin-top: 15px;
+}
+#edit_practice_btn {
+	margin-bottom: 10px;
+}
+.nav-tabs > li > a:hover, .navbar .nav > .active > a {
+	background: none !important;
+}
+.nav-tabs > li > a {
+	padding-right: 0;
+}
+.exercise-item span, .template-edit, .template-copy, .template-remove {
+	color: #a2a2a8 !important;
+}
+.navbar-fixed-top, .navbar-fixed-bottom {
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+	z-index: 1030;
+	border-width: 0 0 1px;
+}
+.navbar, #header_box {
+	padding: 0 !important;
+}
+
+.btn-submit {
+	color: #fff;
+	background-color: #28a745;
+	border-color: #28a745;
+	width: 100px;
+}
+.text-field {
+	height: 38px;
+}
+#addWorkoutToProgram {
+	height: 35px;
+	width: 40px !important;
+	margin-top:0px;
+	border-left: 1px solid #fff;
+	background: #e9e9eb;
+	display: inherit;
+	font-size: 18px;
+}
+#addWorkoutToProgram a {
+	font-size: 18px;
+}
+.left_injury {
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
+input[type=checkbox] {
+	position: relative;
+	top: 3px;
+}
+#patient_survey_div{
+	margin-top: 5px;
+}

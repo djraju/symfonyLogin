@@ -1,0 +1,256 @@
+<script type="text/javascript">
+  var autoLogout;
+  var autoLogoutTime = 1800000; // 30 minutes
+  var isStarted = 0;
+
+  function startLogout()
+  {
+    if (isStarted === 0)
+    {
+      isStarted = 1;
+      autoLogout = setTimeout(function() {
+          document.location = "{{ path('_logout') }}";
+      }, autoLogoutTime);
+    }
+  }
+
+  function stopLogout()
+  {
+    isStarted = 0;
+    clearTimeout(autoLogout);
+  }
+
+  {% if app.request.cookies.get('REMEMBERME') == false %}
+        startLogout();
+  {% endif %}
+</script>
+
+{% if is_granted('ROLE_ADMIN') %}
+
+    {% set adminTabPath = '_admin_practices' %}
+    {% set exerciseTabPath = '_admin_exercise_list' %}
+    {% set logoPath = '_admin_practices' %}
+    {% set reportingTabPath = '_admin_reporting' %}
+    {% set workoutTemplateTabPath = '_admin_list_workout_template' %}
+
+    {% set showAdminTab = true %}
+    {% set showExerciseTab = true %}
+    {% set showReportingTab = true %}
+    {% set showWorkoutTemplateTab = true %}
+    {% set showMaintenanceTab = true %}
+
+{% elseif is_granted('ROLE_PROVIDER') %}
+
+    {% set exerciseTabPath = '_provider_exercise_list' %}
+    {% set logoPath = '_provider_patients' %}
+    {% set patientTabPath = '_provider_patients' %}
+    {% set workoutTemplateTabPath = '_provider_list_workout_template' %}
+
+    {% if isPracticeAdmin == true %}
+        {% set adminTabPath = '_provider_admin' %}
+        {% set showAdminTab = true %}
+    {% endif %}
+
+    {% set showExerciseTab = true %}
+    {% set showPatientTab = true %}
+    {% set showWorkoutTemplateTab = true %}
+
+{% elseif is_granted('ROLE_PATIENT') %}
+
+    {% set logoPath = '_patient_workout' %}
+    {% set progressTabPath = '_patient_progress' %}
+    {% set surveyTabPath = '_patient_survey' %}
+    {% set workoutTabPath = '_patient_workout' %}
+
+    {% set showProgressTab = true %}
+    {% set showSurveyTab = true %}
+    {% set showWorkoutTab = true %}
+
+{% endif %}
+
+{% set messageTabPath = '_messages' %}
+{% set showMessageTab = true %}
+
+<div id="navigation_main" class="navbar navbar-fixed-top">
+  <div id="header_box" class="container">
+    <div class="row">
+      <div class="col">
+           <div class="logo">
+              <span class="helper"></span>
+              <a href="{{ path(logoPath) }}">
+                <img src="{{ ktx_logo }}" />
+              </a>
+            </div>
+      </div>
+      <div class="col">
+          <div class="welcomeText">
+              <span>Welcome {{ app.user.firstName ~ ' ' ~ app.user.lastName }}</span>
+          </div>
+      </div>
+      <div class="col">
+           <div class="helpLinks">
+              <ul class="list-inline">
+                <li class="list-inline-item"><a class="dropdown-item" href="{{ path('_account') }}">My Account</a></li>
+                <li class="list-inline-item"><a class="dropdown-item" href="{{ path('_help') }}">Help</a></li>
+                <li class="list-inline-item"><a class="dropdown-item" href="{{ path('_logout') }}">Sign Out</a></li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </div><!--//header_box//-->
+
+
+  <div id="navigation_tabs" class="navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+            <div class="logoLeft">
+              
+              <a href="{{ path(logoPath) }}">
+                <img src="{{ logo }}" />
+              </a>
+            </div>
+        <div class="rightMenu">
+            <div class="row">
+              <div class="col-md-12">
+                <nav class="tabbable pull-left" id="menu_back">
+                  <ul class="nav nav-tabs" id="menu_box">
+                    {% if showWorkoutTab is defined %}
+                      <li id="workout_tab">
+                        <a href="{{ path(workoutTabPath) }}">
+                            WORKOUT<br/>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+                    {% if showProgressTab is defined %}
+                      <li id="progress_tab">
+                        <a href="{{ path(progressTabPath) }}">
+                            PROGRESS<br/>
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showPatientTab is defined %}
+                      <li id="patients_tab">
+                        <a href="{{ path(patientTabPath) }}">
+                          PATIENTS<br/>
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showMessageTab is defined %}
+                      <li id="messages_tab">
+                        <a href="{{ path(messageTabPath) }}">
+                          {% if numMessages is not defined %}
+                            {% set numMessages = 0 %}
+                          {% endif %}
+
+                          {# wrapping in a bold tag so it can be updated on ajax calls #}
+                          MESSAGES <b style="font-weight: inherit">{{ '(' ~ numMessages ~ ')' }}</b><br/>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showAdminTab is defined %}
+                      <li id="admin_tab">
+                        <a href="{{ path(adminTabPath) }}">
+                          ADMIN<br/>
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showWorkoutTemplateTab is defined %}
+                      <li id="workout_template_tab">
+                        <a href="{{ path(workoutTemplateTabPath) }}">
+                          WORKOUTS<br/>
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showExerciseTab is defined %}
+                      <li id="exercise_tab">
+                        <a href="{{ path(exerciseTabPath) }}">
+                          EXERCISES<br/>
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showReportingTab is defined %}
+                      <li id="reporting_tab">
+                        <a href="{{ path(reportingTabPath) }}">
+                          REPORTING<br/>
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showSurveyTab is defined %}
+                      <li id="survey_tab">
+                        <a href="{{ path(surveyTabPath) }}">
+                          SURVEY
+                          <br/><i class="fa fa-list-alt" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+
+                    {% if showMaintenanceTab is defined %}
+                      <li id="survey_tab">
+                        <a href="{{ path('_maintenance') }}">
+                          Maintenance
+                          <br/><i class="fa fa-cogs" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    {% endif %}
+                  </ul>
+                </nav>
+              </div>
+            </div>            
+        </div><!--//col-md-6//-->
+      </div>
+        <div class="col pull-right">
+          <div id="navigation_user" class="dropdown">
+              {% if switchPractice == 1 %}
+              <a class="nav-link dropdown-toggle username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Switch Practice</a>
+              <div class="dropdown-menu">
+                  {% for ProviderPractice in practices %}
+                  <a class="dropdown-item" href="{{ path('_user_change_practice', {id: ProviderPractice.practice.id}) }}">{{ProviderPractice.practice.name}}</a>
+                  {% endfor %}
+              </div>
+              {% endif %}
+          </div>
+      </div><!--//col-md-3//-->
+
+    </div><!--//container//-->
+  </div><!--//navigation_tabs//-->
+
+  {% block tertiary_menu %}{% endblock %}
+
+</div><!--//navigation_menu//-->
+</div>
+
+<script>
+$(function() {
+  {% if activePage is defined %}
+    $('#{{ activePage }}_tab').addClass("active");
+  {% endif %}
+    $('#navigation_user').on('mouseover', function() {
+        $(this).find('.dropdown-menu').show();
+    });
+    $('#navigation_user').on('mouseout', function() {
+        $(this).find('.dropdown-menu').hide();
+    });
+  if( $(document).find('nav.tertiary').length > 0 && $(document).find('.flash-message').length > 0 ) {
+      $(document).find('.flash-message').addClass('margin10');
+  } else {
+      $(document).find('.flash-message').removeClass('margin10');
+  }
+});
+
+</script>

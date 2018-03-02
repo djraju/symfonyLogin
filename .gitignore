@@ -1,3 +1,18 @@
+######################
+## Emacs backup files
+#####################
+*~
+
+#################
+## PhpStorm
+#################
+.idea/*
+
+####################
+## AWS ELB
+####################
+.elasticbeanstalk/*
+
 
 ###> symfony/framework-bundle ###
 .env
@@ -10,7 +25,12 @@
 .web-server-pid
 ###< symfony/web-server-bundle ###
 
-############
-## PHP Storm
-############
-.idea/*
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
