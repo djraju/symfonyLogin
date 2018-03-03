@@ -2,7 +2,6 @@
 
 namespace App\Form\Type\User;
 
-use App\Entity\AbstractKinetxxEntity;
 use App\Entity\User;
 use App\Services\States;
 use Symfony\Component\Form\AbstractType;
@@ -76,7 +75,7 @@ class EditContactInfoType extends AbstractType
                 array(
                     'label' => 'Address Line 1',
                     'attr' => array(
-                        'maxlength' => AbstractKinetxxEntity::ST_ADDRESS_MAX_LENGTH,
+                        'maxlength' => User::ST_ADDRESS_MAX_LENGTH,
                     ),
                     'required' => false,
                 )
@@ -87,7 +86,7 @@ class EditContactInfoType extends AbstractType
                 array(
                     'label' => 'Address Line 2',
                     'attr' => array(
-                        'maxlength' => AbstractKinetxxEntity::ST_ADDRESS_MAX_LENGTH,
+                        'maxlength' => User::ST_ADDRESS_MAX_LENGTH,
                     ),
                     'required' => false,
                 )
@@ -97,7 +96,7 @@ class EditContactInfoType extends AbstractType
                 TextType::class,
                 array(
                     'attr' => array(
-                        'maxlength' => AbstractKinetxxEntity::CITY_MAX_LENGTH,
+                        'maxlength' => User::CITY_MAX_LENGTH,
                     ),
                     'required' => false,
                 )
@@ -115,7 +114,7 @@ class EditContactInfoType extends AbstractType
                 TextType::class,
                 array(
                     'attr' => array(
-                        'maxlength' => AbstractKinetxxEntity::ZIP_MAX_LENGTH,
+                        'maxlength' => User::ZIP_MAX_LENGTH,
                     ),
                     'required' => false,
                 )

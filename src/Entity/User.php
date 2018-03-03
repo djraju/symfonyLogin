@@ -15,14 +15,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="users", indexes={@ORM\Index(name="search_idx", columns={"first_name", "last_name"})})
  * @ORM\Entity
  */
-class User extends AbstractKinetxxEntity implements UserInterface, EquatableInterface, \Serializable
+class User implements UserInterface, EquatableInterface, \Serializable
 {
     const NAME = 'App:User';
     const SALUTATION_MAX_LENGTH = 10;
     const FIRST_NAME_MAX_LENGTH = 30;
     const LAST_NAME_MAX_LENGTH = 30;
     const EMAIL_MAX_LENGTH = 150;
-
+    const CITY_MAX_LENGTH = 30;
+    const ST_ADDRESS_MAX_LENGTH = 60;
+    const ZIP_MAX_LENGTH = 30;
     /**
      * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
      * @ORM\JoinTable(name="users_roles")

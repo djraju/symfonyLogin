@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="roles")
  * @ORM\Entity
  */
-class Role extends AbstractKinetxxEntity
+class Role
 {
     const NAME = 'App:Role';
     const ADMIN = 'ROLE_ADMIN';
