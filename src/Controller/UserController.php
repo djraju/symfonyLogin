@@ -71,14 +71,6 @@ class UserController extends Controller
     }
 
     /**
-     * Route("/user/changeTempPassword", name="_change_temp_password")
-     */
-    public function changeTempPasswordAction()
-    {
-        die;
-    }
-
-    /**
      * @Route("/user/removeProfilePicture", name="_remove_profile_picture")
      *
      * @return Response
