@@ -89,14 +89,6 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/user/practice/{id}", name="_user_change_practice")
-     */
-    public function userChangePracticeAction()
-    {
-        die;
-    }
-
-    /**
      * @Route("/admin/exercise/list", name="_admin_exercise_list")
      *
      * @return Response

@@ -214,19 +214,6 @@
             </div>            
         </div><!--//col-md-6//-->
       </div>
-        <div class="col pull-right">
-          <div id="navigation_user" class="dropdown">
-              {% if switchPractice == 1 %}
-              <a class="nav-link dropdown-toggle username" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Switch Practice</a>
-              <div class="dropdown-menu">
-                  {% for ProviderPractice in practices %}
-                  <a class="dropdown-item" href="{{ path('_user_change_practice', {id: ProviderPractice.practice.id}) }}">{{ProviderPractice.practice.name}}</a>
-                  {% endfor %}
-              </div>
-              {% endif %}
-          </div>
-      </div><!--//col-md-3//-->
-
     </div><!--//container//-->
   </div><!--//navigation_tabs//-->
 
