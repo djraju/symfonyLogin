@@ -12,13 +12,14 @@ use App\Form\Type\User\ChangePasswordType;
 use App\Form\Type\User\EditContactInfoType;
 use App\Form\Type\User\EditPictureType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
  */
-class UserController extends AbstractBaseController
+class UserController extends Controller
 {
     const ACCOUNT = 'account';
     const HELP = 'help';
@@ -167,5 +168,22 @@ class UserController extends AbstractBaseController
         $response = array('totalUnread' => 0, 'latestSender' => null);
 
         return new Response(json_encode($response));
+    }
+
+    private function createDefaultParameters($page = null)
+    {
+        $ktxLogo = $logo = 'https://s3.amazonaws.com/ktx-static/site-images/logos/kinetxx-logo.png';
+
+        $a = array(
+            'numMessages' => 0,
+            'activePage' => $page,
+            'isPracticeAdmin' => false,
+            'ktx_logo' => $ktxLogo,
+            'logo' => $logo,
+            'container' => '',
+            'switchPractice' => 0,
+        );
+
+        return $a;
     }
 }

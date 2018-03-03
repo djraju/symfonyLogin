@@ -2,15 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class SecurityController
  */
-class SecurityController extends AbstractBaseController
+class SecurityController extends Controller
 {
     /**
      * @Route("/logout", name="_logout")
