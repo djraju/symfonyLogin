@@ -2,15 +2,6 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="notify">
-                {% for flashMessage in app.session.flashbag.get('maintenance_notice') %}
-                    <div class="alert alert-info" role="alert">
-                        {{ flashMessage|raw }}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-6">
                 <div style="padding-left: 30px;">
@@ -39,8 +30,6 @@
                                 </span>
                                 {% if username %}
                                   {% set usernameVal = username %}
-                                {% elseif app.request.cookies.get('_username') %}
-                                  {% set usernameVal = "{{ app.request.cookies.get('_username') }}" %}
                                 {% endif %}
                                 <input class="form-control col-lg-10 input-user" readonly="readonly" required="true" value="{{ usernameVal }}" placeholder="Username" name="_username" type="text" autocomplete="off" />
                             </div>
@@ -48,7 +37,7 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                 </span>
-                                <input class="form-control col-lg-10 input-password" required="true" placeholder="Password" name="_password" type="password"  autocomplete="off" />
+                                <input class="form-control col-lg-10 input-password" required="true" value="{{ 'password' }}" placeholder="Password" name="_password" type="password"  autocomplete="off" />
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="_token" value="{{ csrf_token('kinetxx') }}" />
@@ -66,27 +55,3 @@
 
 {% endblock %}
 
-{% block modal %}
-  {% if isPatient is defined %}
-  <div id="stay_signedin_modal" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <!-- Modal content-->
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">X</button>
-                  <h3 class="header">Why Stay Signed In?</h3>
-              </div>
-              <div class="modal-body">
-                  <p>When you choose this option on sign in, we will remember who you are and keep you signed in for up to {{ staySignedInValidity }} unless you sign out.</p>
-                  <p>Please note: If you share your personal computer with others, they could access and make changes to your account. You should definitely not use this option on public computers.</p>
-
-                  <p>This feature is enabled only for Patient Login</p>
-              </div>
-              <div class="modal-footer">
-                  
-              </div>
-          </div>
-      </div>
-  </div>
-  {% endif %}
-{% endblock %}
