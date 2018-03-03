@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="users", indexes={@ORM\Index(name="search_idx", columns={"first_name", "last_name"})})
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity
  */
 class User extends AbstractKinetxxEntity implements UserInterface, EquatableInterface, \Serializable
 {
