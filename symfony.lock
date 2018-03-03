@@ -68,9 +68,6 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
-    "escapestudios/symfony2-coding-standard": {
-        "version": "3.0.1"
-    },
     "fzaninotto/faker": {
         "version": "v1.7.1"
     },
@@ -121,9 +118,6 @@
             "version": "4.0",
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
-    },
-    "squizlabs/php_codesniffer": {
-        "version": "3.2.3"
     },
     "symfony/apache-pack": {
         "version": "1.0",
