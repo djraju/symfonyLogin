@@ -5,30 +5,34 @@
  */
 namespace App\Services\Utilities;
 
-use Doctrine\DBAL\DBALException;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\DailyWorkout;
-use App\Entity\Form\User\UserFormData;
-use App\Entity\Message;
-use App\Entity\Practice;
-use App\Entity\Role;
-use App\Entity\UsaTimezone;
 use App\Entity\User;
-use App\Entity\WeblogAction;
-use App\Entity\UserVerificationUrl;
-use App\Services\AWS\AwsS3;
-use App\Services\EncryptionServiceInterface;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Class UserService
  */
-class UserService extends BaseService
+class UserService
 {
+    protected $em;
+
+    /**
+     * @param EntityManagerInterface $em
+     */
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
+    /**
+     * @return EntityRepository|ObjectRepository
+     */
+    protected function getUserRepo()
+    {
+        return $this->em->getRepository(User::NAME);
+    }
+
     /**
      * Return a User given username
      *

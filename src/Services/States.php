@@ -66,6 +66,4 @@ class States
 
         return $states;
     }
-
 }
-?>
