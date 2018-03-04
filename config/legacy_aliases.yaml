@@ -1,4 +1,0 @@
-# app/config/legacy_aliases.yaml
-services:
-    _defaults:
-        public: true
