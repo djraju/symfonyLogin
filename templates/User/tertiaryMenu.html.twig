@@ -1,0 +1,25 @@
+{% extends "User/userMenu.html.twig" %}
+
+{% block tertiary_menu %}
+<nav class="tertiary provider">
+  <ul class="clearfix container">
+    <li>
+      <span class="patient-name">
+        {{ patientName }}
+        <span class="fa fa-chevron-right"></span>
+      </span>
+    <li>
+        <a href="{{ path('_provider_list_manage_workout', {'id': patientId}) }}">Workout</a>
+    </li>
+    <li>
+        <a href="{{ path('_provider_show_progress', {'id': patientId}) }}">Progress</a>
+    </li>
+    <li>
+      <a href="{{ path('_messages_id', {'id': patientId}) }}">Messages</a>
+    </li>
+    <li>
+      <a href="{{ path('_provider_patient_profile', {'id': patientId}) }}">Profile</a>
+    </li>
+  </ul>
+</nav> <!--//tertiary provider//-->
+{% endblock %}

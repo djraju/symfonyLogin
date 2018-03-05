@@ -1,0 +1,172 @@
+{% extends "User/userlayout.html.twig" %}
+
+{% block bodyClass %}
+class = "interior"
+{% endblock %}
+
+{% block body %}
+
+<div class="row" style="margin-top: 15px;">
+    <div class="col-md-1"></div>
+  <div class="col-md-11" id="right_side">
+    <h2 class="header" style="position: relative;">My Account</h2>
+    <div class="clearfix"></div>
+    <button data-toggle="modal" class="btn btn-primary pull-right" data-target="#editContactInfo" id="edit_contact_info_btn">Edit Contact Information</button>
+
+    <div class="outer_box section">
+      <h3 class="subheader">Contact Information</h3>
+
+      <table class="table table-striped">
+        <tr>
+          <td style="text-align: right;">User Name</td><td style="font-weight: normal;">{{ user.username }}</td>
+          <td style="text-align: right;">Salutation</td><td style="font-weight: normal;">{{ user.salutation }}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">First Name</td><td style="font-weight: normal;">{{ user.firstName}}</td>
+          <td style="text-align: right;">Last Name</td><td style="font-weight: normal;">{{ user.lastName}}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">Email</td><td style="font-weight: normal;">{{ user.email }}</td>
+          <td style="text-align: right;">Phone</td><td style="font-weight: normal;">{{ user.phone }}</td>
+        </tr>
+
+        <tr>
+          <td style="text-align: right;">Address</td><td style="font-weight: normal;">
+            {{ user.stAddress1 }}
+            {% if user.stAddress2 is not empty %}
+              <br />
+              {{ user.stAddress2 }}
+            {% endif %}
+          </td>
+          <td style="text-align: right;">City</td><td style="font-weight: normal;">{{ user.city }}</td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">State</td><td style="font-weight: normal;">{{ user.state }}</td>
+          <td style="text-align: right;">Zip</td><td style="font-weight: normal;">{{ user.zip }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+        <div class="row">
+            <div class="col-md-3">
+              <h3 class="subheader">Picture</h3>
+              <img src="{{ profilePicture }}" class="profile-pic"/>
+              <br /><br />
+              <a data-toggle="modal" data-dynamic="true" class="btn btn-primary" href="#editPicture" id="edit_picture_btn">Edit Picture</a>
+                {% if canDeleteProfilePicture %}
+                    <a href="javascript:;" id="remove_picture" title="Delete profile picture">
+                        <span data-target="#removePictureModal"><span class="fa fa-remove"></span></span>
+                    </a>
+
+                    <div id="removePictureModal" class="modal fade" role="dialog" tabindex='-1'>
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">X</button>
+                                    <h4 class="modal-title">Delete profile picture</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" id="remove-picture" class="btn btn-submit" data-dismiss="modal">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+              <h3 class="subheader">Password</h3>
+              Current password: ******************
+              <a data-toggle="modal" data-dynamic="true" class="btn btn-primary" href="#changePassword" id="change_password_btn">Edit Password</a>
+            </div>
+        </div>
+        {% if is_granted('ROLE_PATIENT') %}
+        {#
+          <div class="col-md-5">
+            <h3 class="subheader">Payment Information</h3>
+            <span>If you would like to modify your subscription, please log into PayPal.com and follow these steps:</span>
+            <ol>
+              <li>Log in to your <a href="http://www.paypal.com" class="orange_link" target="_blank">PayPal</a> account.</li>
+              <li>Click <strong>Profile</strong> near the top of the page.</li>
+              <li>Click <strong>My money</strong>.</li>
+              <li>Click <strong>Update</strong> in the <strong>My Preapproved Payments</strong> section.</li>
+              <li>Select <strong>Kinetxx</strong> as the merchant agreement you want to change.</li>
+              <li>From here, you can <strong>Change Payment Method</strong> or <strong>Cancel</strong> your subscription.</li>
+            </ol>
+
+            <span>Note: If you would like to change your subscription plan, you'll need to cancel your current subscription, return to the Kinetxx site, and choose a different plan.</span>
+          </div>
+        #}
+        {% endif %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block modal %}
+  {{ parent() }}
+  {% include 'User/editContactInfoForm.html.twig' %}
+  {% include 'User/editPictureForm.html.twig' %}
+  {% include 'User/changePasswordForm.html.twig' %}
+
+<script>
+    // clear error message on focus
+
+    $('#editContactInfo_phone').focus(function(e) {
+      e.preventDefault();
+      $('#phone').removeClass('error');
+      $('#editContactInfo_phone').siblings('span').remove();
+    });
+
+    // clear error message on focus
+    $('#editContactInfo_email').focus(function(e) {
+      e.preventDefault();
+      $('#email').removeClass('error');
+      $('#editContactInfo_email').siblings('span').remove();
+    });
+
+    // clear error message on focus
+    $('#editPicture_file').focus(function(e) {
+      e.preventDefault();
+      $('#file').removeClass('error');
+      $('#editPicture_file').siblings('span').remove();
+    });
+
+    $('#changePassword_currentPassword').focus(function(e) {
+      e.preventDefault();
+      $('#currentPassword').removeClass('error');
+      $('#changePassword_currentPassword').siblings('span').remove();
+    });
+
+    $('#changePassword_newPassword_second').focus(function(e) {
+      e.preventDefault();
+      $('#second').removeClass('error');
+      $('#changePassword_newPassword_second').siblings('span').remove();
+    });
+
+
+    $(function() {
+
+      {% if form.vars.valid == false %}
+        $('#edit_contact_info_btn').click();
+      {% elseif editPictureForm.vars.valid == false %}
+        $('#edit_picture_btn').click();
+      {% elseif changePasswordForm.vars.valid == false %}
+        $('#change_password_btn').click();
+      {% endif %}
+        $('#remove_picture').on('click', function() {
+            $('#removePictureModal').modal('show');
+        });
+
+        $('#remove-picture').on('click', function() {
+            window.location = "{{ path('_remove_profile_picture') }}";
+        });
+    });
+  </script>
+{% endblock %}

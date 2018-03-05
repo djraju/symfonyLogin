@@ -1,0 +1,12 @@
+App\Entity\Role:
+  role_admin:
+    name: 'ROLE_ADMIN'
+
+  role_provider:
+    name: 'ROLE_PROVIDER'
+
+  role_provider_admin:
+    name: 'ROLE_PROVIDER_ADMIN'
+
+  role_user:
+    name: 'ROLE_PATIENT'

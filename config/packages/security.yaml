@@ -1,35 +1,53 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
 security:
     encoders:
-            App\Entity\User:
-                algorithm: bcrypt
-                cost: 15
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 15
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_ADMIN
+        ROLE_PROVIDER:    ROLE_PROVIDER
+        ROLE_PATIENT:     ROLE_PATIENT
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        #in_memory: { memory: ~ }
         users:
-              id: App\Services\UserProvider
+          id: App\Services\UserProvider
+
     firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            anonymous: true
+
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
             guard:
-                  authenticators:
-                      - App\Security\LoginFormAuthenticator
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
             logout:
-                  path:   _logout
-                  target: _public
-            # activate different ways to authenticate
+                path:   _logout
+                target: _public_signin
 
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            logout_on_user_change: true
+#            remember_me:
+#                secret:   '%kernel.secret%'
+#                lifetime: 2592000 # 30 days in seconds
+#                path:     /
+#                domain: ~
+#                remember_me_parameter: _stay_signedin
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+#                token_provider: App\Services\Utilities\TokenService
 
-            # form_login: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/provider, roles: ROLE_PROVIDER }
+        - { path: ^/patient, roles: ROLE_PATIENT }
+        - { path: ^/user, roles: [ROLE_ADMIN, ROLE_PROVIDER, ROLE_PATIENT] }

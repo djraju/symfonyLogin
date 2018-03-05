@@ -1,27 +1,17 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dhananjay
- * Date: 1/3/18
- * Time: 11:44 AM
+/*
+ * (c) Kinetxx Inc <admin@kinetxx.com>
  */
 namespace App\Security;
 
-use App\Entity\User;
-use App\Services\UserService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 
 /**
@@ -29,41 +19,6 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
  */
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private $encoder;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var CsrfTokenManagerInterface
-     */
-    private $tokenManager;
-
-    /**
-     * @var UserService $userService
-     */
-    private $userService;
-
-    /**
-     * @param UserPasswordEncoderInterface $encoder
-     * @param UrlGeneratorInterface        $urlGenerator
-     * @param MobileDetector               $mobileDetector
-     * @param CsrfTokenManagerInterface    $tokenManager
-     * @param UserService                  $userService
-     */
-    public function __construct(UserPasswordEncoderInterface $encoder, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $tokenManager, UserService $userService)
-    {
-        $this->encoder        = $encoder;
-        $this->urlGenerator   = $urlGenerator;
-        $this->tokenManager   = $tokenManager;
-        $this->userService    = $userService;
-    }
-
     /**
      * Get the authentication credentials from the request and return them
      * as an associate array. If you return null, authentication
@@ -79,14 +34,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        $username = $request->request->get('_username');
-        $request->getSession()->set(Security::LAST_USERNAME, $username);
-        $password = $request->request->get('_password');
-
-
         return [
-            'username' => $username,
-            'password' => $password,
+            'username' => 'ktx_support',
+            'password' => 'password',
         ];
     }
 
@@ -109,15 +59,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         $username = $credentials['username'];
 
-        if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-            throw new AuthenticationException('signin.invalid.email');
-        }
-
         try {
             $user = $userProvider->loadUserByUsername($username);
         } catch (UsernameNotFoundException $e) {
-            // Catch exception so we can hide username
-            throw new AuthenticationException('Invalid Username/Password.');
+            throw new AuthenticationException('Unknown User');
         }
 
         return $user;
@@ -141,11 +86,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-        $plainPassword = $credentials['password'];
-        if (!$this->userService->checkCredentials($user, $this->encoder, $plainPassword)) {
-            throw new AuthenticationException('Invalid Username/Password.');
-        }
-
         return true;
     }
 
@@ -159,16 +99,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        /** @var Session $session */
-        $session = $request->getSession();
-        $session->set(Security::AUTHENTICATION_ERROR, $exception);
-        $session->getFlashBag()->add('error', $exception->getMessage());
-
-        // MAS: TODO Add Audit probably in listener
-//        if ($this->mobileDetector->isMobile()) {
-//            return new RedirectResponse($this->getLoginUrl().'?error=1');
-//        }
-
         return new RedirectResponse($this->getLoginUrl());
     }
 
@@ -183,13 +113,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        /** @var User $user */
-        $user = $token->getUser();
-
-        $url = '_login_redirect';
-
-        // MAS: TODO Add Audit probably in listener
-        return new RedirectResponse($this->urlGenerator->generate($url));
+        return new RedirectResponse('/user/account');
     }
 
     /**
@@ -222,6 +146,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     protected function getLoginUrl()
     {
-        return  $this->urlGenerator->generate('_public');
+        return  '/signin';
     }
 }

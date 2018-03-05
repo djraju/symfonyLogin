@@ -1,0 +1,170 @@
+{% extends "Public/publiclayout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+    <div id="banner" class="banner_section_bg col-lg-12"> <!-- meta slider -->
+       
+            <div style="width: 100%; margin: 0 auto;" class="metaslider metaslider-flex metaslider-4 ml-slider">
+                <div id="metaslider_container_4">
+                    <div id="metaslider_4">
+                        <ul class="slides">
+                            <li style="display: block; width: 100%;" class="slide-113 ms-image"><img src="{{imageBase}}site-images/home/slider/new_banner.png" height="666" width="1900" alt="" class="slider-4 slide-113" /></li>
+                            <li style="display: none; width: 100%;" class="slide-115 ms-image"><img src="{{imageBase}}site-images/home/slider/new_banner2.png" height="666" width="1900" alt="" class="slider-4 slide-115" /></li>
+                            <li style="display: none; width: 100%;" class="slide-56 ms-image"><img src="{{imageBase}}site-images/home/slider/img-3.jpg" height="666" width="1900" alt="" class="slider-4 slide-56" /></li>
+                            <li style="display: none; width: 100%;" class="slide-105 ms-image"><img src="{{imageBase}}site-images/home/slider/slide-new-1.jpg" height="666" width="1900" alt="" class="slider-4 slide-105" /></li>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    var metaslider_4 = function ($) {
+                        $('#metaslider_4').addClass('flexslider'); // theme/plugin conflict avoidance
+                        $('#metaslider_4').flexslider({
+                            slideshowSpeed: 3000,
+                            animation: "fade",
+                            controlNav: true,
+                            directionNav: true,
+                            pauseOnHover: true,
+                            direction: "horizontal",
+                            reverse: false,
+                            animationSpeed: 1000,
+                            prevText: "&lt;",
+                            nextText: "&gt;",
+                            slideshow: true
+                        });
+                    };
+                    var timer_metaslider_4 = function () {
+                        var slider = !window.jQuery ? window.setTimeout(timer_metaslider_4, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_4, 1) : metaslider_4(window.jQuery);
+                    };
+                    timer_metaslider_4();
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12  clearfix">
+		
+			<div  id="advantage" class="top_milddle_sect_bg">
+        <section id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div class="top_midlle_heading">
+
+                            <h2>The Kinetxx Advantage</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="features_holder">
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img1.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img1" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Easy Enrollment at Physician&#8217;s Office</h2>
+                            <p><p>You&#8217;re ready to workout from day 1</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img2.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img2" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Low One Time Fee</h2>
+                            <p><p>Less than the price of 2 PT visits</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img3.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img3" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Standard Reporting</h2>
+                            <p><p>Free, standard reporting keeps physician in the loop</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img4.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img4" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Compliance Assurance for Payers</h2>
+                            <p><p>Allows insurers to track recovery and participation</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img5.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img5" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Convenient</h2>
+                            <p><p>Kinetxx workouts can be performed anywhere</p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div id="feature-1" class="top_midle_box"> <img width="124" height="124" src="{{imageBase}}site-images/home/advantage/img6.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="img6" /><!--<img class="hvr-pulse" src="http://www.kinetxx.com/images/img1.png" alt="" title=""/>-->
+                            <h2>Easy to Use</h2>
+                            <p><p>HIPAA compliant, mobile friendly platform</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+      </div><!--//info-snippets//-->
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 clearfix">
+			  <div id="working" class="midlle_sect_bg">
+        <section id="feature_one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 feature-box triggerAnimation animated clearfix bounceIn" data-animate="bounceIn">
+                        <div class="top_midlle_heading">
+
+                            <h2>The Kinetxx Solution</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="feature_1_image" class="col-md-3 col-sm-3 feature_image text-center triggerAnimation animated fadeInLeft" data-animate="fadeInLeft">
+                        <div class="midle_box">
+                            <div class="midlle_box_img"><img width="200" height="147" src="{{imageBase}}site-images/home/solution/wrk_img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="wrk_img1" /></div>
+                            <div class="midlle_box_cntnt">
+                                <h2>Physician enrolls patient</h2>
+                                <p><p>Patients are easily enrolled during their visit. All needed equipment arrives at patient&#8217;s home</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="feature_1_image" class="col-md-3 col-sm-3 feature_image text-center triggerAnimation animated fadeInLeft" data-animate="fadeInLeft">
+                        <div class="midle_box">
+                            <div class="midlle_box_img"><img width="174" height="132" src="{{imageBase}}site-images/home/solution/wrk_img3.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="wrk_img3" /></div>
+                            <div class="midlle_box_cntnt">
+                                <h2>Feedback</h2>
+                                <p><p>Patient receives feedback and can ask questions via secure messaging platform.</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="feature_1_image" class="col-md-3 col-sm-3 feature_image text-center triggerAnimation animated fadeInLeft" data-animate="fadeInLeft">
+                        <div class="midle_box">
+                            <div class="midlle_box_img"><img width="231" height="142" src="{{imageBase}}site-images/home/solution/wrk_img2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="wrk_img2" /></div>
+                            <div class="midlle_box_cntnt">
+                                <h2>Daily Workouts</h2>
+                                <p><p>Patient receives daily, varied workouts</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="feature_1_image" class="col-md-3 col-sm-3 feature_image text-center triggerAnimation animated fadeInLeft" data-animate="fadeInLeft">
+                        <div class="midle_box">
+                            <div class="midlle_box_img"><img width="209" height="134" src="{{imageBase}}site-images/home/solution/wrk_img4.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="wrk_img4" /></div>
+                            <div class="midlle_box_cntnt">
+                                <h2>Recovery</h2>
+                                <p><p>Patient resumes normal routine.</p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    </section>
+                </div>
+      </div>
+    </div>
+
+{% endblock %}

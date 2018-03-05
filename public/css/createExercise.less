@@ -1,0 +1,125 @@
+@charset "utf-8";
+@import "standard.less";
+
+#save-exercise-btn {
+    margin-top: 0px;
+}
+
+.customExerciseHeader {
+    .btn {
+        margin: 0px;
+        max-width: 150px;
+    }
+}
+
+#customExercise {
+    @height: 130px;
+
+    div {
+        margin-bottom: 15px;
+    }
+
+    input {
+        margin-right: 5px;
+        padding: 5px;
+    }
+
+    input[type=number] {
+        width: 50px;
+        text-align: right;
+        padding: 2px;
+    }
+
+    input[type=url] {
+        width: 100%;
+    }
+
+    input[type=file] {
+        width: 100%;
+    }
+
+    textarea {
+        padding: 5px;
+        margin-left: 5px;
+        width: 60%;
+        height: @height;
+        resize: none;
+    }
+
+    label {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+    select {
+        margin-bottom: 0px;
+    }
+
+    img {
+        max-width: @height;
+        max-height: @height;
+    }
+
+    iframe {
+        width: 100%;
+        height: 200px;
+    }
+
+    .border {
+        border-left: 1px solid @cl-accent-gray;
+        border-right: 1px solid @cl-accent-gray;
+    }
+
+    #exercise_name {
+        width: 100%;
+    }
+
+    #exercise_youtubeDemo {
+        width: 100%;
+    }
+
+    #availability div {
+        margin-bottom: 5px;
+    }
+
+    .step {
+        margin-bottom: 40px;
+    }
+
+    .filterCriteria {
+        label {
+            margin-bottom: 0px;
+
+            &:first-child {
+                padding: 5px;
+                width: 100%;
+                background: @cl-accent-gray;
+                color: @cl-content-gray;
+            }
+        }
+
+        div {
+            background: @cl-soft-gray;
+            margin-bottom: 0px;
+        }
+
+        .section {
+            margin-bottom: 15px;
+
+            div {
+                padding: 2px;
+
+                &:first-child {
+                    padding: 0px;
+                }
+            }
+        }
+
+
+    }
+
+
+}
+

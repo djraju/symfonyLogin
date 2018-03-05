@@ -8,6 +8,7 @@ parameters:
 doctrine:
     dbal:
         # configure these for your database server
+        # configure these for your database server
         driver: 'pdo_mysql'
         server_version: "%database_server_version%"
         host:     "%database_host%"
@@ -18,7 +19,7 @@ doctrine:
         charset: utf8mb4
 
         # With Symfony 3.3, remove the `resolve:` prefix
-        #url: '%env(resolve:DATABASE_URL)%'
+        # url: '%env(resolve:DATABASE_URL)%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore

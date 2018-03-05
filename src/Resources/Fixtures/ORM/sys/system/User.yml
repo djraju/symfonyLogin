@@ -1,0 +1,10 @@
+App\Entity\User:
+  ktx_support:
+    username: 'ktx_support'
+    password: '\$2y\$15\$LCHGGmtuFL7247RnGbTc7ea7rUbp5kIV0RkBvCjCAIh4xA.cYMByu'
+    firstName: 'Kinetxx'
+    lastName: 'Support'
+    email: 'support@kinetxx.com'
+    newUser: 0
+    dateJoined: '<dateTimeThisYear()>'
+    roles: ['@role_admin']

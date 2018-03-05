@@ -1,0 +1,43 @@
+{% form_theme form 'Form/fields.html.twig' %}
+
+<div class="modal fade" id="editContactInfo" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      {{ form_start(form, {'attr': {'class': 'form-horizontal modal-form', 'id': 'editContactInfoForm'}}) }}
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h3 class="header">Contact Information</h3>
+        </div>
+
+        <div class="modal-body">
+          <p>Required fields are indicated with an asterisk (<span class="error_text">*</span>).</p>
+          <br>
+          {{ form_row(form.salutation) }}
+          {{ form_row(form.firstName) }}
+          {{ form_row(form.lastName) }}
+          {{ form_row(form.email) }}
+          {{ form_row(form.phone) }}
+          {{ form_row(form.stAddress1) }}
+          {{ form_row(form.stAddress2) }}
+          {{ form_row(form.city) }}
+          {{ form_row(form.state) }}
+          {{ form_row(form.zip) }}
+        </div>
+
+        <div class="modal-footer">
+          <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+          {{ form_widget(form.submit, {'attr': {'class': 'btn btn-submit'}}) }}
+        </div>
+
+      {{ form_end(form) }}
+
+    </div>
+  </div>
+</div>
+<script>
+    $(function() {
+        $('#editContactInfo_state').removeClass('col-md-8');
+        $('#editContactInfo_state').parent().addClass('custom-select reduced-width66');
+    })
+</script>

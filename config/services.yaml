@@ -1,14 +1,53 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'en'
+
+    # Kinetxx config
+    aws_kms_master_key_id:  'alias/ktx-master'
+    aws_region:             'us-east-1'
+    aws_version:            'latest'
+
+    # Form array for convenience
+    ktx_config:
+        database_password:          '%database_password%'
+        database_user:              '%database_user%'
+        default_user_timezone:      '%default_user_timezone%'
+        maxmind_license_key:        '%maxmind_license_key%'
+        maxmind_user_id:            '%maxmind_user_id%'
+
+    # Adds fallback VALUES if the env var is not set.
+    # This allows you to run cache:warmup even if your environment variables are not available yet.
+    # You should not need to change this value.
+    env(AWS_S3_CUSTOM_BUCKET): ''
+    env(BASE_URL): ''
+    env(DB_HOST): ''
+    env(DB_NAME): ''
+    env(DB_PASSWORD): ''
+    env(DB_VERSION): ''
+    env(DB_USER): ''
+    env(MASTER_KEY): ''
+    env(MM_LICENSE_KEY): ''
+    env(MM_USER_ID): ''
+    # Previously in parameters.yml.dist
+    aws_s3_custom_bucket:       '%env(AWS_S3_CUSTOM_BUCKET)%'
+    base_url:                   '%env(BASE_URL)%'
     database_host:              '%env(DB_HOST)%'
     database_name:              '%env(DB_NAME)%'
-    database_user:              '%env(DB_USER)%'
     database_password:          '%env(DB_PASSWORD)%'
     database_port:              ~
     database_server_version:    '%env(DB_VERSION)%'
-
-    locale: 'en'
+    database_user:              '%env(DB_USER)%'
+    default_user_timezone:      'America/Chicago'
+    encryption_service:         'App\Services\KmsEncryptionService'
+    master_key:                 '%env(MASTER_KEY)%'
+    maxmind_license_key:        '%env(MM_LICENSE_KEY)%'
+    maxmind_user_id:            '%env(MM_USER_ID)%'
+    captcha_secret_key:         '6LfipiQUAAAAAAVcaornGyXJpM0mCOmkJHr5rjth'
+    captcha_site_key:           '6LfipiQUAAAAAFWzvdezIhWoWN5c1JDMKCZoDsBs'
+    captcha_lang:               'en'
+    stay_signed_in_validity:    '30 days'
+    max_failed_login_attempts:  5
 
 services:
     # default configuration for services in *this* file
@@ -23,7 +62,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{Entity,Migrations,Tests}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -31,11 +70,7 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-
     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
-            public:    false
-            arguments:
-                - 'mysql:dbname=%database_name%'
-                - { db_table: sessions, db_username: '%database_user%', db_password: '%database_password%' }
+        arguments:
+            - 'mysql:dbname=%database_name%'
+            - { db_table: sessions, db_username: '%database_user%', db_password: '%database_password%' }

@@ -1,0 +1,9 @@
+{# override the normal button widget to implement the back button #}
+{% block button_widget %}
+{% spaceless %}
+  {% if label is empty %}
+      {% set label = name|humanize %}
+  {% endif %}
+  <button type="{{ type|default('button') }}" name="{{ attr.name }}" value="back" formnovalidate="formnovalidate" class="{{ attr.class }}">{{ label|trans({}, translation_domain) }}</button>
+{% endspaceless %}
+{% endblock button_widget %}

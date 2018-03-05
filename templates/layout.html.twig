@@ -1,0 +1,225 @@
+{% set imageBase = "https://s3.amazonaws.com/ktx-static/" %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MSQ9KXR');</script>
+    <!-- End Google Tag Manager -->
+    <meta http-equiv="Content-Type" content="text/html; charset={{ _charset }}"/>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="EXPIRES" content="Mon, 22 Jul 2002 11:12:01 GMT">
+
+    <title>Kinetxx</title>
+
+    <link href="{{ asset('css/blitzer/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css/bootstrap-responsive.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css/standard.less') }}" rel="stylesheet/less" type="text/css" media="all" />
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+	  <link rel='stylesheet'  href="{{ asset('flexslider/flexslidere485.css?ver=3.3.6')}}" type='text/css' media='all' property='stylesheet' />
+    <link rel="icon" sizes="16x16" href="{{ asset('ico/favicon.ico') }}" />
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css/tinycarousel.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('css/selectric.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+    {% block less %}{% endblock %}
+
+    <script type="text/javascript" src="{{ asset('js/less.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/blitzer/jquery-ui.min.js') }}"></script>
+	<script type='text/javascript' src="{{ asset('flexslider/jquery.flexslider-mine485.js?ver=3.3.6')}}"></script>
+
+    {% block head %}{% endblock %}
+  </head>
+
+    <body id="the_body" {% block bodyClass %}{% endblock %}>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSQ9KXR"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+      {% block menu %}{% endblock %}
+
+      {% if container is defined and container is not empty %}
+          <div id="kinetxx_the_container" class="container-fluid">
+      {% else %}
+          <div id="the_container" class="container">
+      {% endif %}
+      
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="flash-message" style="top: 85px;">{{ flashMessage }}</div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('tertiary') %}
+          <div class="flash-message-tertiary" style=" position: relative;top: -20px;">{{ flashMessage }}</div>
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+      </div>
+
+      {% block modal %}{% endblock %}
+              {% set currentPath = path(app.request.attributes.get('_route'),
+              app.request.attributes.get('_route_params')) %}
+      {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/user/flashMessage.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/handlebars-v1.3.0.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.tinycarousel.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
+        <script>
+            $( window ).load(function() {
+                changeHeights();
+            });
+
+            $( window ).resize(function() {
+                changeHeights();
+            });
+
+            function changeHeights() {
+                var winHeight             = $(window).height();
+                var extraHeight           = 180;
+                var templateHeight        = 260;
+                var providerPatientHeight = 230;
+                var surveyHeight          = 170;
+                $('#right_side').css('height', ( winHeight - extraHeight )+'px' );
+                $('#workout_template_table_div').css('height', ( winHeight - templateHeight )+'px' );
+                $('#provider_patients_div').css('height', ( winHeight - providerPatientHeight )+'px' );
+                $('#patient_survey_div').css('height', ( winHeight - surveyHeight )+'px' );
+                if($('.flash-message').length > 0) {
+                    $('.listWorkout').css('height', ( winHeight - 460 )+'px' );
+                } else {
+                    $('.listWorkout').css('height', ( winHeight - 440 )+'px' );
+                }
+                $('#patientProgress').css('height', ( winHeight - 225 )+'px' );
+            }
+
+            function validatePassword(pswd, elementId) {
+                if(elementId !== 'undefined') {
+                    if(elementId == 'changePassword_newPassword_second') {
+                        $('#pswd_info').addClass('margin_top-170');
+                    } else if(elementId == 'onboardPassword_password_second') {
+                        $('#pswd_info').addClass('margin_top-170');
+                        $('#pswd_info').removeClass('margin_top-250');
+                    } else {
+                        $('#pswd_info').removeClass('margin_top-170');
+                        $('#pswd_info').removeClass('margin_top-320');
+                    }
+                }
+
+                //validate the length
+                if ( pswd.length < 8 ) {
+                    $('#length').removeClass('valid').addClass('invalid');
+                } else {
+                    $('#length').removeClass('invalid').addClass('valid');
+                }
+
+                //validate letter
+                if ( pswd.match(/[A-z]/) ) {
+                    $('#letter').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#letter').removeClass('valid').addClass('invalid');
+                }
+
+                //validate capital letter
+                if ( pswd.match(/[A-Z]/) ) {
+                    $('#capital').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#capital').removeClass('valid').addClass('invalid');
+                }
+
+                //validate number
+                if ( pswd.match(/\d/) ) {
+                    $('#number').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#number').removeClass('valid').addClass('invalid');
+                }
+
+                //validate space
+                if ( pswd.match(/[!@#$%*]/) ) {
+                    $('#space').removeClass('invalid').addClass('valid');
+                } else {
+                    $('#space').removeClass('valid').addClass('invalid');
+                }
+
+                if($('#pswd_info').find('li.invalid').length > 0) {
+                    $('#pswd_info').show();
+                } else {
+                    $('#pswd_info').hide();
+                }
+            }
+            $(function() {
+                if($('#right_side').length > 0
+                    || $('#workout_template_table').length > 0
+                    || $('#provider_patients_div').length > 0
+                    || $('#patient_survey_div').length > 0
+                    || $('.listWorkout').length > 0
+                    || $('#patientProgress').length > 0
+                ) {
+                    $('html, body').css('overflow', 'hidden');
+                }
+
+
+                $('input[type=password]').keyup(function() {
+                    if($(this).attr('id') != "changePassword_currentPassword") {
+                        validatePassword($(this).val(), $(this).attr('id'));
+                    }
+                }).focus(function() {
+                    if($(this).attr('id') != "changePassword_currentPassword") {
+                        validatePassword($(this).val(), $(this).attr('id'));
+                        $('#pswd_info').show();
+                    }
+                }).blur(function() {
+                    $('#pswd_info').hide();
+                });
+            });
+          $('body').click(function() {
+            $('.flash-message').remove();
+            $('.flash-message-tertiary').parent().css('margin-top',0);
+            $('.flash-message-tertiary').remove();
+          });
+          Handlebars.registerHelper('lookup', function( obj, index ) {
+            return obj[index];
+          });
+          Handlebars.registerHelper('math', function( operand1, operator, operand2 ) {
+            switch( operator ) {
+              case "+":
+                return ( parseInt( operand1 ) + parseInt( operand2 ) );
+                break;
+              case "-":
+                return ( parseInt( operand1 ) - parseInt( operand2 ) );
+                break;
+              case "*":
+                return ( parseInt( operand1 ) * parseInt( operand2 ) );
+                break;
+              case "/":
+                return ( parseInt( operand1 ) / parseInt( operand2 ) );
+                break;
+            }
+          });
+          Handlebars.registerHelper('if_eq', function(a, b, opts) {
+              if (a === b) {
+                  return opts.fn(this);
+              } else {
+                  return opts.inverse(this);
+              }
+          });
+          Handlebars.registerHelper('datePrint', function(dateObj) {
+              var dateTime = dateObj.date + ' Z';
+              return moment(dateTime).format('ll');
+          });
+            Handlebars.registerHelper('datePrint1', function(dateObj) {
+                var dateTime = dateObj.date + ' Z';
+                return moment(dateTime).format('h:mm a MM/DD/YYYY');
+            });
+        </script>
+      {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<div id="navigation_main" class="navbar navbar-fixed-top">
+  <div id="header_box" class="container">
+    <div class="logoLeft">
+      <span class="helper"></span>
+      <a href="{{ app.request.getSchemeAndHttpHost() }}">
+        <img src="https://s3.amazonaws.com/ktx-static/site-images/logos/kinetxx-logo.png" />
+      </a>
+    </div>
+
+    <div id="navigation_marketing">
+      <ul>
+		<li><a rel="m_PageScroll2advantage" href="{{ app.request.getSchemeAndHttpHost() }}/#advantage">Kinetxx Advantage</a></li>
+        <li><a href="{{ app.request.getSchemeAndHttpHost() }}/#working">Kinetxx Solution</a></li>
+        <li>
+           <a href="{{ path('_public_aboutus') }}">About Us</a>
+        </li>
+        <li>
+            <a href="{{ path('_public_contact') }}">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+
+    <a class="anchor-signin pull-right" href="{{ path('_public_signin') }}">Sign In</a>
+
+    {#% include 'Public/loginform.html.twig' %#}
+
+  </div><!--//header_box//-->
+</div><!--//navigation_main//-->
+
+<script>
+  $(function() {
+    {% if activePage is defined %}
+        $('#menu_{{ activePage }}').addClass("active");
+        $('#mobile_menu_{{ activePage }}').addClass("active");
+    {% endif %}
+
+  });
+</script>

@@ -1,0 +1,64 @@
+{% extends "layout.html.twig" %}
+
+{% block head %}
+
+  <link href="{{ asset('css/bootstrap-scroll-modal.css') }}" rel="stylesheet" type="text/css" media="screen" />
+  <link href="{{ asset('css/bootstrap-multiselect.css') }}" rel="stylesheet" type="text/css" media="screen" />
+
+  <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/additional-methods.js') }}"></script>
+  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
+
+{% endblock %}
+
+{% block menu %}
+  {% include 'User/userMenu.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+    <script>
+      $(function() {
+          setInterval(function() {
+              $.ajax({
+                  url: "{{ path('_user_count_message') }}",
+                  method: 'GET'
+              }).done(function(response) {
+                  var obj = $.parseJSON(response);
+                  var previousCountStr = $(document).find('#messages_tab').find('b').text();
+                  var previousCount    = previousCountStr.slice(1);
+                  var currentPath      = "{{ currentPath }}";
+                  previousCount = previousCount.slice(0, -1);
+                  if( previousCount < obj.totalUnread && currentPath == "/user/messages" ) {
+                      var latestSender  = "preview"+obj.latestSender;
+                      var activePanelId = $(document).find('#conversasion').find('.activeConversation').prop('id');
+                      if(activePanelId == latestSender) {
+                          $(document).find('#conversasion').find('.activeConversation').trigger('click');
+                      }
+                      $.each(obj.userUnread, function(key, value) {
+                          if($('#preview'+key).find('.unread').length == 0) {
+                              var name = $('#preview'+key).find('.name').text();
+                              name = name + "<span class='unread'></span>";
+                              $('#preview'+key).find('.name').html(name);
+                          }
+                          var prevCount = $('#preview'+key).find('.unread').html();
+                          if(prevCount == "") {
+                              prevCount = 0;
+                          }
+                          if(prevCount < value) {
+                              $('#preview'+key).find('.unread').html(value);
+                              $('#preview'+key).find('.unread').show();
+                          } else if(prevCount == 0 && value == 0){
+                              $('#preview'+key).find('.unread').hide();
+                          }
+                      });
+                  }
+                  if(obj.totalUnread > 0) {
+                      $(document).find('#messages_tab').find('b').html('('+obj.totalUnread+')');
+                  }
+              });
+          }, 20000);
+      });
+    </script>
+{% endblock javascripts %}

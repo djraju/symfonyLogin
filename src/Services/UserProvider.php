@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entity\User;
+use App\Services\Utilities\UserService;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -40,7 +41,7 @@ class UserProvider implements UserProviderInterface
     {
         $user = $this->userService->getUserByUsername($login);
 
-        if ($user == null) {
+        if (null === $user) {
             throw new UsernameNotFoundException();
         }
 
